@@ -6,6 +6,7 @@ namespace App\Domain;
 
 use Money\Money;
 use Ramsey\Uuid\UuidInterface;
+use Symfony\Component\Workflow\WorkflowInterface;
 
 class Listing
 {
@@ -49,5 +50,38 @@ class Listing
             $price,
             $description
         );
+    }
+
+    public function id(): UuidInterface
+    {
+        return $this->id;
+    }
+
+    public function activate(WorkflowInterface $workflow): void
+    {
+        if (false === $workflow->can($this, 'accept')) {
+            throw new AlreadyActivatedException();
+        }
+
+        $workflow->apply($this, 'accept');
+    }
+
+    public function buy(WorkflowInterface $workflow): void
+    {
+        if (false === $workflow->can($this, 'buy')) {
+            throw new CannotBeBoughtException();
+        }
+
+        $workflow->apply($this, 'buy');
+    }
+
+    public function getState(): string
+    {
+        return $this->state;
+    }
+
+    public function setState(string $state): void
+    {
+        $this->state = $state;
     }
 }
