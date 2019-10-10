@@ -1,0 +1,11 @@
+{
+    "name": "radnok/womain-in-technology-workshop",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Konrad Alfaro",
+            "email": "alfaro.konrad@gmail.com"
+        }
+    ],
+    "require": {}
+}
