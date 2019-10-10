@@ -15,9 +15,12 @@
     "require": {
         "php": ">=7.3",
         "ramsey/uuid": "^3.8",
+        "ramsey/uuid-doctrine": "1.5.*",
         "money/money": "^2.0",
         "symfony/messenger": "^4.3",
-        "symfony/workflow": "^4.3"
+        "symfony/workflow": "^4.3",
+        "doctrine/dbal": "2.9.*",
+        "doctrine/orm": "2.6.*"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
